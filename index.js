@@ -1,9 +1,10 @@
-var self = require("sdk/self");
+var self    = require("sdk/self");
+var pageMod = require("sdk/page-mod");
 
-// a dummy function, to show how tests work.
-// to see how to test this function, look at test/test-index.js
-function dummy(text, callback) {
-  callback(text);
-}
-
-exports.dummy = dummy;
+pageMod.PageMod({
+  include: 'https://twitter.com/*',
+  contentScriptFile: [
+    self.data.url('jquery-1.12.3.min.js'),
+    self.data.url('content-script.js')
+  ]
+});
